@@ -840,7 +840,30 @@
 
 
     <!-- custom js  прокрутка страницы вверх -->
-    <script type="text/javascript" src="shares/js/main.js"></script>          
+    <script type="text/javascript" src="shares/js/main.js"></script>
+	<script>
+    // Этот скрипт насильно снимает фокус со ВСЕХ элементов при клике.
+    // Именно фокус заставляет Chrome/Opera рисовать черно-белую рамку.
+    document.addEventListener('mousedown', function(e) {
+        // Если кликнули на ссылку или что-то внутри неё
+        var link = e.target.closest('a');
+        if (link) {
+            // Запрещаем браузеру делать стандартный фокус
+            e.preventDefault(); 
+            
+            // И принудительно убираем фокус со всего, что могло его получить
+            setTimeout(function() {
+                if (document.activeElement) {
+                    document.activeElement.blur();
+                }
+                // На всякий случай снимаем фокус со всех ссылок и кнопок на странице
+                document.querySelectorAll('a, button, input, .navbar-nav > li').forEach(function(el) {
+                    el.blur();
+                });
+            }, 10);
+        }
+    }, true);
+</script>
 </body>
 </html> 
 
