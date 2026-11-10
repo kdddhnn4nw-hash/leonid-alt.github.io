@@ -79,7 +79,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
     <!-- Это сам скрипт плавной прокрутки до якоря -->
-    <script>
+    <!-- <script>
         $(document).ready(function(){
             $("a[href*='#']").on("click", function(e){
                 var anchor = $(this);
@@ -91,9 +91,35 @@
             });
         });
     </script>
-    <!-- // Это сам скрипт плавной прокрутки до якоря -->
+    // Это сам скрипт плавной прокрутки до якоря -->
 
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+	<!-- 1. Сначала подключаем jQuery -->
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
+<!-- 2. Затем идет твой исправленный скрипт прокрутки -->
+<script>
+    $(document).ready(function(){
+        $("a[href*='#']").on("click", function(e){
+            var target = $(this).attr('href');
+            
+            // Проверяем, что это не просто "#" и что элемент существует
+            if (target !== '#' && $(document.getElementById(target.substring(1))).length) {
+                var $target = $(document.getElementById(target.substring(1))); // Надежный поиск по ID
+                
+                $('html, body').stop().animate({
+                    scrollTop: $target.offset().top
+                }, 777);
+                
+                e.preventDefault();
+                return false;
+            }
+        });
+    });
+</script>
+
+<!-- 3. Дальше идут остальные скрипты
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>  -->
 
     <!-- Скрипт прокрутки страницы вверх -->
     <script>
