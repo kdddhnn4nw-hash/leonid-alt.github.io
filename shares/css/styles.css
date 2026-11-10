@@ -541,7 +541,43 @@ img {
         }
     }
 
+/* =======================================================
+   ФИКС РАМОК В CHROME/OPERA ДЛЯ ССЫЛОК И ИКОНОК
+   ======================================================= */
 
+/* 1. Убираем любые обводки и тени у самой ссылки во всех состояниях */
+a, 
+a:link, 
+a:visited, 
+a:hover, 
+a:active, 
+a:focus, 
+a:focus-visible {
+    outline: none !important;
+    outline-offset: 0 !important;
+    box-shadow: none !important;
+    -webkit-box-shadow: none !important;
+    text-decoration: underline !important; /* Оставляем только классическое подчеркивание */
+}
+
+/* 2. Убираем обводку у иконок FontAwesome внутри ссылок */
+a i, 
+a .fa {
+    outline: none !important;
+    box-shadow: none !important;
+    text-decoration: none !important;
+    display: inline-block;
+}
+
+/* 3. Убираем рамку у посещенных ссылок, если браузер ее добавляет */
+a:visited {
+    outline: none !important;
+}
+
+/* 4. Отключаем подсветку тапом на мобильных */
+a {
+    -webkit-tap-highlight-color: transparent !important;
+}
 /*  -----------------------------   // Bootstrap 3 ------------------------- */
 
 
