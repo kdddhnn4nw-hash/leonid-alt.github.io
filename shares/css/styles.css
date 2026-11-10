@@ -32,6 +32,7 @@ a {
   -moz-transition: all 0.4s ease-in-out;
   -ms-transition: all 0.4s ease-in-out;
   -o-transition: all 0.4s ease-in-out;
+  text-decoration: underline;
 }
 a:hover {
   text-decoration: underline;
@@ -39,6 +40,11 @@ a:hover {
 }
 a:focus {
   text-decoration: none;
+}
+/* Убираем подчеркивание у иконок, если они внутри ссылок */
+a .fa {
+    text-decoration: none;
+    display: inline-block;
 }
 
 * {
