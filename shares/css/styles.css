@@ -541,7 +541,43 @@ img {
         }
     }
 
+/* =======================================================
+   КРАСИВОЕ АКТИВНОЕ МЕНЮ (КАК НА СКРИНШОТЕ)
+   ======================================================= */
 
+/* 1. Убираем любые рамки фокуса и клика */
+.navbar a:focus, 
+.navbar a:active,
+.navbar-nav > li > a:focus,
+.navbar-nav > li > a:active {
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+/* 2. Настраиваем саму ссылку в меню */
+.navbar-default .navbar-nav > li > a {
+    text-decoration: none !important; /* Убираем стандартное подчеркивание текста */
+    padding-bottom: 5px !important; /* Отступ от текста до полоски */
+    margin-bottom: -5px !important; /* Компенсируем отступ, чтобы не ехала верстка */
+    border-bottom: 3px solid transparent; /* Заготовка для полоски (по умолчанию прозрачная) */
+    transition: all 0.3s ease;
+}
+
+/* 3. Эффект при наведении (hover) - опционально */
+.navbar-default .navbar-nav > li > a:hover {
+    border-bottom: 3px solid #2d7788; /* Цвет полоски при наведении (подставь свой цвет) */
+    color: #2d7788;
+}
+
+/* 4. СТИЛЬ АКТИВНОЙ ССЫЛКИ (как на твоем скриншоте) */
+/* В Bootstrap активный пункт меню обычно имеет класс .active на теге <li> */
+.navbar-default .navbar-nav > .active > a,
+.navbar-default .navbar-nav > .active > a:hover,
+.navbar-default .navbar-nav > .active > a:focus {
+    color: #2d7788 !important; /* Цвет текста активной ссылки (бирюзовый) */
+    background-color: transparent !important; /* Убираем серый фон Bootstrap */
+    border-bottom: 3px solid #2d7788 !important; /* ТА САМАЯ ПОЛОСКА ПОД ТЕКСТОМ */
+}
 /*  -----------------------------   // Bootstrap 3 ------------------------- */
 
 
